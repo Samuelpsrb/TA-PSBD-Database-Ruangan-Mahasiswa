@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_pembeli');
-            $table->foreignId('id_buku');
-            $table->foreignId('id_kasir');
+            $table->foreignId('id_mahasiswa');
+            $table->foreignId('id_ruangan');
+            $table->foreignId('id_petugas');
             $table->integer('lama_peminjaman');
             $table->date('tanggal_peminjaman');
             $table->timestamps();

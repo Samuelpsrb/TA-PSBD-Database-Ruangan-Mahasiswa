@@ -29,8 +29,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="MetodeBayar" class="form-label">No. HP</label>
-                        <input type="text" class="form-control" name="MetodeBayar" id="MetodeBayar">
+                        <label for="NoHp" class="form-label">No. HP</label>
+                        <input type="text" class="form-control" name="NoHp" id="NoHp">
                       </div>
                     
                     <button type="submit" class="btn btn-primary float-end">Submit</button>

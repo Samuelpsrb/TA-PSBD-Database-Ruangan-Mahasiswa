@@ -24,13 +24,13 @@
                 <form action="{{ route("ruangan.store")}}" method="POST">
                     @csrf
                     <div class="mb-3">
-                      <label for="Judul" class="form-label">Nama Ruangan</label>
-                      <input type="text" class="form-control" name="Judul" id="Judul">
+                      <label for="NamaRuangan" class="form-label">Nama Ruangan</label>
+                      <input type="text" class="form-control" name="NamaRuangan" id="NamaRuangan">
                     </div>
 
                     <div class="mb-3">
-                        <label for="Harga" class="form-label">Kapasitas</label>
-                        <input type="text" class="form-control" name="Harga" id="Harga">
+                        <label for="Kapasitas" class="form-label">Kapasitas</label>
+                        <input type="text" class="form-control" name="Kapasitas" id="Kapasitas">
                       </div>
 
                       <!-- <div class="mb-3">

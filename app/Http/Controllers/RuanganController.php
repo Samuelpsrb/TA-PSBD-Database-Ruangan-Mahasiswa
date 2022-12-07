@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Buku;
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,9 +15,9 @@ class RuanganController extends Controller
      */
     public function index()
     {
-        $datas = DB::select('select * from buku where is_delete is null');
+        $datas = DB::select('select * from ruangan where is_delete is null');
         return view('ruangan.index')
-            ->with('buku', $datas);
+            ->with('ruangan', $datas);
     }
 
     /**
@@ -40,16 +40,16 @@ class RuanganController extends Controller
     {
         $request->validate([
 
-            'Judul' => 'required',
-            'Harga' => 'required',
+            'NamaRuangan' => 'required',
+            'Kapasitas' => 'required',
         ]);
         // Menggunakan Query Builder Laravel dan Named
         DB::insert(
-            'INSERT INTO buku(Judul,Harga) VALUES
-        (:Judul, :Harga)',
+            'INSERT INTO ruangan(NamaRuangan,Kapasitas) VALUES
+        (:NamaRuangan, :Kapasitas)',
             [
-                'Judul' => $request->Judul,
-                'Harga' => $request->Harga,
+                'NamaRuangan' => $request->NamaRuangan,
+                'Kapasitas' => $request->Kapasitas,
             ]
         );
         return redirect()->route('ruangan.index')->with('success', 'Data Admin berhasil disimpan');
@@ -74,7 +74,7 @@ class RuanganController extends Controller
     public function edit($id)
     {
         return view('ruangan.edit')->with([
-            "buku" => Buku::find($id),
+            "ruangan" => Ruangan::find($id),
         ]);
     }
 
@@ -89,15 +89,15 @@ class RuanganController extends Controller
     {
         $request->validate([
 
-            'Judul' => 'required',
-            'Harga' => 'required',
+            'NamaRuangan' => 'required',
+            'Kapasitas' => 'required',
         ]);
         // Menggunakan Query Builder Laravel dan Named
-        DB::update('UPDATE buku SET Judul = :Judul, Harga = :Harga  where id=:id',
+        DB::update('UPDATE ruangan SET NamaRuangan = :NamaRuangan, Kapasitas = :Kapasitas  where id=:id',
             [
                 'id' => $id,
-                'Judul' => $request->Judul,
-                'Harga' => $request->Harga,
+                'NamaRuangan' => $request->NamaRuangan,
+                'Kapasitas' => $request->Kapasitas,
             ]
         );
         return redirect()->route('ruangan.index')->with('success', 'Data Admin berhasil diubah');
@@ -111,15 +111,15 @@ class RuanganController extends Controller
      */
     public function destroy($id)
     {
-        $pembeli = Buku::find($id);
-        $pembeli->delete();
+        $mahasiswa = Ruangan::find($id);
+        $mahasiswa->delete();
 
         return back()->with("Success", "Data Berhasil di Hapus.");
     }
 
     public function soft($id)
     {
-        DB::update('UPDATE buku SET is_delete = 1 WHERE id = :id', ['id' => $id]);
+        DB::update('UPDATE ruangan SET is_delete = 1 WHERE id = :id', ['id' => $id]);
 
         return redirect()->route('ruangan.index')->with('success', 'Data Barang berhasil dihapus');
     }

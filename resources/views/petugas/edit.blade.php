@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pinj.Ruangan</title>
+    <title>RooM</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
   <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-5">Data Kasir</h1>
-        <a href="{{ route("petugas.index")}}" class="btn btn-primary mb-3">Data Kasir</a>
+        <h1 class="text-center mb-5">Data Petugas</h1>
+        <a href="{{ route("petugas.index")}}" class="btn btn-primary mb-3">Data Petugas</a>
         @if($errors->any())
 <div class="alert alert-danger">
 <ul>
@@ -21,22 +21,22 @@
 @endif
         <div class="card">
             <div class="card-body">
-                <form action="{{ route("petugas.update", $kasir->id)}}" method="POST">
+                <form action="{{ route("petugas.update", $petugas->id)}}" method="POST">
                     @csrf
                     @method("PUT")
                     <div class="mb-3">
-                      <label for="NamaKasir" class="form-label">Nama Petugas</label>
-                      <input type="text" class="form-control" name="NamaKasir" value ="{{$kasir->NamaKasir}}" id="NamaKasir">
+                      <label for="NamaPetugas" class="form-label">Nama Petugas</label>
+                      <input type="text" class="form-control" name="NamaPetugas" value ="{{$petugas->NamaPetugas}}" id="NamaPetugas">
                     </div>
 
                     <div class="mb-3">
                         <label for="NoHP" class="form-label">No. HP</label>
-                        <input type="text" class="form-control" name="NoHP" value ="{{$kasir->NoHP}}" id="NoHP">
+                        <input type="text" class="form-control" name="NoHP" value ="{{$petugas->NoHP}}" id="NoHP">
                       </div>
 
                       <div class="mb-3">
                         <label for="Alamat" class="form-label">Alamat</label>
-                        <input type="text" class="form-control" name="Alamat" value ="{{$kasir->Alamat}}" id="Alamat">
+                        <input type="text" class="form-control" name="Alamat" value ="{{$petugas->Alamat}}" id="Alamat">
                       </div>
                     
                     <button type="submit" class="btn btn-primary float-end">Edit</button>

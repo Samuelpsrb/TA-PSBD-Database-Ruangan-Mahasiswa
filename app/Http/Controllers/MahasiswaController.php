@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pembeli;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Psy\Command\WhereamiCommand;
@@ -16,9 +16,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $datas = DB::select('select * from pembeli where is_delete is NULL');
+        $datas = DB::select('select * from mahasiswa where is_delete is NULL');
         return view('mahasiswa.index')
-            ->with('pembeli', $datas);
+            ->with('mahasiswa', $datas);
     }
 
     /**
@@ -42,15 +42,15 @@ class MahasiswaController extends Controller
         $request->validate([
 
             'Nama' => 'required',
-            'MetodeBayar' => 'required',
+            'NoHp' => 'required',
         ]);
         // Menggunakan Query Builder Laravel dan Named
         DB::insert(
-            'INSERT INTO pembeli(Nama,MetodeBayar) VALUES
-        (:Nama, :MetodeBayar)',
+            'INSERT INTO mahasiswa(Nama,NoHp) VALUES
+        (:Nama, :NoHp)',
             [
                 'Nama' => $request->Nama,
-                'MetodeBayar' => $request->MetodeBayar,
+                'NoHp' => $request->NoHp,
             ]
         );
         return redirect()->route('mahasiswa.index')->with('success', 'Data Admin berhasil disimpan');
@@ -75,7 +75,7 @@ class MahasiswaController extends Controller
     public function edit($id)
     {
         return view('mahasiswa.edit')->with([
-            "pembeli" => Pembeli::find($id),
+            "mahasiswa=" => Mahasiswa::find($id),
         ]);
     }
 
@@ -91,14 +91,14 @@ class MahasiswaController extends Controller
         $request->validate([
 
             'Nama' => 'required',
-            'MetodeBayar' => 'required',
+            'NoHp' => 'required',
         ]);
         // Menggunakan Query Builder Laravel dan Named
-        DB::update('UPDATE pembeli SET Nama = :Nama, MetodeBayar = :MetodeBayar where id=:id',
+        DB::update('UPDATE mahasiswa SET Nama = :Nama, NoHp = :NoHp where id=:id',
             [
                 'id' => $id,
                 'Nama' => $request->Nama,
-                'MetodeBayar' => $request->MetodeBayar,
+                'NoHp' => $request->NoHp,
             ]
         );
         return redirect()->route('mahasiswa.index')->with('success', 'Data Admin berhasil diubah');
@@ -112,16 +112,16 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        $pembeli = Pembeli::find($id);
-        $pembeli->delete();
+        $mahasiswa = Mahasiswa::find($id);
+        $mahasiswa->delete();
 
         return back()->with("Success", "Data Berhasil di Hapus.");
     }
 
     public function soft($id)
     {
-        DB::update('UPDATE pembeli SET is_delete = 1 WHERE id = :id', ['id' => $id]);
+        DB::update('UPDATE mahasiswa SET is_delete = 1 WHERE id = :id', ['id' => $id]);
 
-        return redirect()->route('pembeli.index')->with('success', 'Data Barang berhasil dihapus');
+        return redirect()->route('mahasiswa.index')->with('success', 'Data Barang berhasil dihapus');
     }
 }

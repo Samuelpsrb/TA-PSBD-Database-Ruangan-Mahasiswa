@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>RooM</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
   <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-5">Data Pembeli</h1>
-        <a href="{{ route("mahasiswa.index")}}" class="btn btn-primary mb-3">Data Pembeli</a>
+        <h1 class="text-center mb-5">Data Mahasiswa</h1>
+        <a href="{{ route("mahasiswa.index")}}" class="btn btn-primary mb-3">Data Mahasiswa</a>
         @if($errors->any())
 <div class="alert alert-danger">
 <ul>
@@ -21,17 +21,17 @@
 @endif
         <div class="card">
             <div class="card-body">
-                <form action="{{ route("mahasiswa.update", $pembeli->id)}}" method="POST">
+                <form action="{{ route("mahasiswa.update", $mahasiswa->id)}}" method="POST">
                     @csrf
                     @method("PUT")
                     <div class="mb-3">
                       <label for="Nama" class="form-label">Nama</label>
-                      <input type="text" class="form-control" name="Nama" value ="{{$pembeli->Nama}}" id="Nama">
+                      <input type="text" class="form-control" name="Nama" value ="{{$mahasiswa->Nama}}" id="Nama">
                     </div>
 
                     <div class="mb-3">
-                        <label for="MetodeBayar" class="form-label">No. HP</label>
-                        <input type="text" class="form-control" name="MetodeBayar" value ="{{$pembeli->MetodeBayar}}" id="MetodeBayar">
+                        <label for="NoHp" class="form-label">No. HP</label>
+                        <input type="text" class="form-control" name="NoHp" value ="{{$mahasiswa->NoHp}}" id="NoHp">
                       </div>
                     
                     <button type="submit" class="btn btn-primary float-end">Edit</button>

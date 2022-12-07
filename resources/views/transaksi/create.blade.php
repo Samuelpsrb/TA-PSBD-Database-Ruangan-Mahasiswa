@@ -24,8 +24,8 @@
                 <form action="{{ route("transaksi.store")}}" method="POST">
                     @csrf
                     <div>
-                        <label for="NamaPenerbit" class="form-label">Nama Mahasiswa</label> <br>
-                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:5px;" name="id_pembeli">
+                        <label for="NamaMahasiswa" class="form-label">Nama Mahasiswa</label> <br>
+                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:5px;" name="id_mahasiswa">
                             <option selected style="text-align:center" disabled>-- Pilih Nama Mahasiswa --</option>
                             @foreach($mahasiswa as $m)
                               <option value="{{ $m->id }}">{{ $m->Nama }}</option>
@@ -33,32 +33,32 @@
                         </select>
                     </div>
                     <div>
-                        <label for="NamaPenerbit" class="form-label">Nama Petugas</label> <br>
-                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:3px;" name="id_kasir">
+                        <label for="NamaPetugas" class="form-label">Nama Petugas</label> <br>
+                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:3px;" name="id_petugas">
                             <option selected style="text-align:center" disabled>-- Pilih Nama Petugas --</option>
                             @foreach($petugas as $p)
-                              <option value="{{ $p->id }}">{{ $p->NamaKasir }}</option>
+                              <option value="{{ $p->id }}">{{ $p->NamaPetugas }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div>
-                        <label for="NamaPenerbit" class="form-label">Ruangan</label> <br>
-                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:3px;" name="id_buku">
+                        <label for="Ruangan" class="form-label">Ruangan</label> <br>
+                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:3px;" name="id_ruangan">
                             <option selected style="text-align:center" disabled>-- Pilih Ruangan --</option>
                             @foreach($ruangan as $r)
-                              <option value="{{ $r->id }}">{{ $r->Judul }}</option>
+                              <option value="{{ $r->id }}">{{ $r->NamaRuangan }}</option>
                             @endforeach
                         </select>
                     </div>
 
                       <div class="mb-3">
-                        <label for="NamaPenerbit" class="form-label">Lama Peminjaman</label>
-                        <input type="number" class="form-control" name="lama_peminjaman" id="NamaPenerbit">
+                        <label for="LamaPeminjaman" class="form-label">Lama Peminjaman</label>
+                        <input type="number" class="form-control" name="lama_peminjaman" id="LamaPeminjaman">
                       </div>
 
                       <div class="mb-3">
-                        <label for="NamaPenerbit" class="form-label">Tanggal Peminjaman</label>
-                        <input type="date" class="form-control" name="tanggal_peminjaman" id="NamaPenerbit">
+                        <label for="TanggalPeminjaman" class="form-label">Tanggal Peminjaman</label>
+                        <input type="date" class="form-control" name="tanggal_peminjaman" id="TanggalPeminjaman">
                       </div>
                     
                     <button type="submit" class="btn btn-primary float-end">Submit</button>

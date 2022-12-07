@@ -24,8 +24,8 @@
                 <form action="{{ route("petugas.store")}}" method="POST">
                     @csrf
                     <div class="mb-3">
-                      <label for="NamaKasir" class="form-label">Nama Petugas</label>
-                      <input type="text" class="form-control" name="NamaKasir" id="NamaKasir">
+                      <label for="NamaPetugas" class="form-label">Nama Petugas</label>
+                      <input type="text" class="form-control" name="NamaPetugas" id="NamaPetugas">
                     </div>
 
                     <div class="mb-3">

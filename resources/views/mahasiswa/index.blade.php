@@ -17,18 +17,18 @@
                 <th>Aksi</th>
                 </thead>
                 <tbody>
-                    @foreach ($pembeli as $no => $hasil)
+                    @foreach ($mahasiswa as $no => $hasil)
                     <tr>
                     <td>{{$no+1}}</td>
                     <td>{{$hasil ->Nama}}</td>
-                    <td>{{$hasil ->MetodeBayar}}</td>
+                    <td>{{$hasil ->NoHp}}</td>
                     <td>
                         <a href="{{ route("mahasiswa.edit", $hasil->id)}}"  class="btn btn-success btn-sm">Edit</a>
                         <!-- Button trigger modal -->
                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal{{ $hasil->id }}">
                         Hapus
                     </button>
-                    <form class = "mt-1 form-inline" method="POST" action="{{ route('buku.soft', $hasil->id) }}">
+                    <form class = "mt-1 form-inline" method="POST" action="{{ route('mahasiswa.soft', $hasil->id) }}">
                         @csrf
                             <button onclick="return confirm('{{ __('Are you sure you want to destroy?') }}')" type="submit" class="btn btn-warning">Hapus Bentar</button>
                     </form>

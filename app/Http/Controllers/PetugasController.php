@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kasir;
+use App\Models\Petugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,9 +15,9 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        $datas = DB::select('select * from kasir where is_delete is NULL');
+        $datas = DB::select('select * from petugas where is_delete is NULL');
         return view('petugas.index')
-            ->with('kasir', $datas);
+            ->with('petugas', $datas);
     }
 
     /**
@@ -39,15 +39,15 @@ class PetugasController extends Controller
     public function store(Request $request) {
         $request->validate([
         
-        'NamaKasir' => 'required',
+        'NamaPetugas' => 'required',
         'NoHP' => 'required',
         'Alamat' => 'required',
         ]);
         // Menggunakan Query Builder Laravel dan Named
-        DB::insert('INSERT INTO kasir(NamaKasir,NoHP,Alamat) VALUES
-        (:NamaKasir, :NoHP, :Alamat)',
+        DB::insert('INSERT INTO petugas(NamaPetugas,NoHP,Alamat) VALUES
+        (:NamaPetugas, :NoHP, :Alamat)',
         [
-        'NamaKasir' => $request->NamaKasir,
+        'NamaPetugas' => $request->NamaPetugas,
         'NoHP' => $request->NoHP,
         'Alamat' => $request->Alamat,
         ]
@@ -74,7 +74,7 @@ class PetugasController extends Controller
     public function edit($id)
     {
         return view('petugas.edit')->with([
-            "kasir" => Kasir::find($id),
+            "petugas" => Petugas::find($id),
         ]);
     }
 
@@ -89,15 +89,15 @@ class PetugasController extends Controller
     {
         $request->validate([
 
-            'NamaKasir' => 'required',
+            'NamaPetugas' => 'required',
             'NoHP' => 'required',
             'Alamat' => 'required',
         ]);
         // Menggunakan Query Builder Laravel dan Named
-        DB::update('UPDATE kasir SET NamaKasir = :NamaKasir, NoHP = :NoHP, Alamat = :Alamat where id=:id',
+        DB::update('UPDATE petugas SET NamaPetugas = :NamaPetugas, NoHP = :NoHP, Alamat = :Alamat where id=:id',
             [
                 'id' => $id,
-                'NamaKasir' => $request->NamaKasir,
+                'NamaPetugas' => $request->NamaPetugas,
                 'NoHP' => $request->NoHP,
                 'Alamat' => $request->Alamat,
             ]
@@ -113,15 +113,15 @@ class PetugasController extends Controller
      */
     public function destroy($id)
     {
-        $pembeli = Kasir::find($id);
-        $pembeli -> delete();
+        $mahasiswa = Petugas::find($id);
+        $mahasiswa -> delete();
 
         return back()->with("Success","Data Berhasil di Hapus.");
     }
 
     public function soft($id)
     {
-        DB::update('UPDATE kasir SET is_delete = 1 WHERE id = :id', ['id' => $id]);
+        DB::update('UPDATE petugas SET is_delete = 1 WHERE id = :id', ['id' => $id]);
 
         return redirect()->route('petugas.index')->with('success', 'Data Barang berhasil dihapus');
     }

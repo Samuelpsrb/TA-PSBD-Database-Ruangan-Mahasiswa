@@ -31,8 +31,8 @@
                     <tr>
                     <td>{{$hasil->id}}</td>
                     <td>{{$hasil->Nama}}</td>
-                    <td>{{$hasil->NamaKasir}}</td>
-                    <td>{{$hasil->Judul}}</td>
+                    <td>{{$hasil->NamaPetugas}}</td>
+                    <td>{{$hasil->NamaRuangan}}</td>
                     <td>{{$hasil->lama_peminjaman}} hari</td>
                     <td>{{$hasil->tanggal_peminjaman}}</td>
                     <td>
@@ -41,7 +41,7 @@
                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal{{ $hasil->id }}">
                         Hapus
                     </button>
-                    <!-- <form class = "mt-1 form-inline" method="POST" action="{{ route('buku.soft', $hasil->id) }}">
+                    <!-- <form class = "mt-1 form-inline" method="POST" action="{{ route('ruangan.soft', $hasil->id) }}">
                         @csrf
                             <button onclick="return confirm('{{ __('Are you sure you want to destroy?') }}')" type="submit" class="btn btn-warning">Hapus Bentar</button>
                     </form> -->

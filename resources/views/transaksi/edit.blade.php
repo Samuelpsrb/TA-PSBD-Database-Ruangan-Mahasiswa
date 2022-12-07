@@ -25,38 +25,38 @@
                   @csrf
                   @method("PUT")
                     <div>
-                        <label for="NamaPenerbit" class="form-label">Nama Mahasiswa</label> <br>
-                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:5px;" name="id_pembeli">
+                        <label for="NamaMahasiswa" class="form-label">Nama Mahasiswa</label> <br>
+                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:5px;" name="id_mahasiswa">
                             @foreach($mahasiswa as $m)
                               <option value="{{ $m->id }}" {{$m->Nama == $transaksi->Nama ? 'selected' : ''}}>{{ $m->Nama }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div>
-                        <label for="NamaPenerbit" class="form-label">Nama Petugas</label> <br>
-                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:3px;" name="id_kasir">
+                        <label for="NamaPetugas" class="form-label">Nama Petugas</label> <br>
+                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:3px;" name="id_petugas">
                             @foreach($petugas as $p)
-                              <option value="{{ $p->id }}" {{$p->NamaKasir == $transaksi->NamaKasir ? 'selected' : ''}}>{{ $p->NamaKasir }}</option>
+                              <option value="{{ $p->id }}" {{$p->NamaPetugas == $transaksi->NamaPetugas ? 'selected' : ''}}>{{ $p->NamaPetugas }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div>
-                        <label for="NamaPenerbit" class="form-label">Ruangan</label> <br>
-                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:3px;" name="id_buku">
+                        <label for="Ruangan" class="form-label">Ruangan</label> <br>
+                        <select id="department" style="width:500px; height:35px; border:1px solid #666; border-radius:3px;" name="id_ruangan">
                             @foreach($ruangan as $r)
-                              <option value="{{ $r->id }}" {{$r->Judul == $transaksi->Judul ? 'selected' : ''}}>{{ $r->Judul }}</option>
+                              <option value="{{ $r->id }}" {{$r->NamaRuangan == $transaksi->NamaRuangan ? 'selected' : ''}}>{{ $r->NamaRuangan }}</option>
                             @endforeach
                         </select>
                     </div>
 
                       <div class="mb-3">
-                        <label for="NamaPenerbit" class="form-label">Lama Peminjaman</label>
-                        <input type="number" class="form-control" name="lama_peminjaman" id="NamaPenerbit" value="{{ $transaksi->lama_peminjaman }}">
+                        <label for="LamaPeminjaman" class="form-label">Lama Peminjaman</label>
+                        <input type="number" class="form-control" name="lama_peminjaman" id="LamaPeminjaman" value="{{ $transaksi->lama_peminjaman }}">
                       </div>
 
                       <div class="mb-3">
-                        <label for="NamaPenerbit" class="form-label">Tanggal Peminjaman</label>
-                        <input type="date" class="form-control" name="tanggal_peminjaman" id="NamaPenerbit" value="{{ $transaksi->tanggal_peminjaman }}">
+                        <label for="TanggalPeminjaman" class="form-label">Tanggal Peminjaman</label>
+                        <input type="date" class="form-control" name="tanggal_peminjaman" id="TanggalPeminjaman" value="{{ $transaksi->tanggal_peminjaman }}">
                       </div>
                     
                     <button type="submit" class="btn btn-primary float-end">Edit</button>
